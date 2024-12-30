@@ -828,32 +828,44 @@ const gaming = {
   },
 };
 
-//---1---
+//---✅1---
 const [players1, players2] = gaming.players;
 
 console.log(players1, players2);
 
-// ---2---
+// ---✅2---
 const [goalkeeper, ...fieldPlayers] = players1;
 
 console.log(goalkeeper, fieldPlayers);
 
-//---3---
+//---✅3---
+let allPlayer = [...players1, ...players2];
 
-// ---4---
+console.log(allPlayer);
 
+// ---⛔4---
+/*
 const [players1Final] = gaming.players;
 
 players1Final.push("Thiago", "Coutinho", "Perisic");
 
 console.log(players1Final);
+*/
+const players1Final = [...players1, "Thiago", "Coutinho", "Perisic"];
 
-// ---5---
+console.log(players1Final);
 
-const {team1 , x : draw , team2} = gaming.odds
+// ---✅5---
 
-console.log(team1 , draw , team2);
+const { team1, x: draw, team2 } = gaming.odds;
 
-// ---6---
+console.log(team1, draw, team2);
 
-
+// ---❌6---
+const printGoals = function (...players) {
+  console.log(`${players.length} goals were scored`);
+};
+printGoals(...gaming.scored);
+// ---❌7---
+team1 < team2 && console.log(`team 1 was winner`);
+team1 > team2 && console.log(`team 2 was winner`);
